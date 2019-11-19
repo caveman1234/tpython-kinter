@@ -2,32 +2,24 @@
 import os
 import sys
 from tkinter import *
-from src.test import func
-
+from src.Frame_1.Frame_1 import Frame_1
 
 root = Tk()
-root.geometry("500x500")
+winfo_screenwidth = root.winfo_screenwidth()
+winfo_screenheight = root.winfo_screenheight()
+width = 1000
+height = 600
+
+newGeometry = "{}x{}+{}+{}".format(width,height,int((winfo_screenwidth-width)/2),int((winfo_screenheight - height)/2))
+root.geometry(newGeometry)
 
 class App():
   def __init__(self,root):
     self.root = root
-    self.create_wedget()
-  def create_wedget(self):
-    btn = Button(self.root,text="按钮")
-    btn.pack()
-    btn.bind("<Button-1>",self.click1)
-  def click1(self,event):
-    
-    print(os.path.abspath("."))
-    print(os.getcwd())
-    
+    frame1 = Frame_1(self.root)
+    frame1.pack(fill=X)
 
-    f = open("aaa.txt","a+")
-    f.write(os.path.abspath("."))
-    f.write("\n")
-    f.write(os.getcwd())
-    f.write(func())
-    f.close()
+
 
 
 
