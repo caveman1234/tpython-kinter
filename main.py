@@ -1,12 +1,12 @@
 
 import os
+import sys
 from tkinter import *
-from test import func
+from src.test import func
 
 
 root = Tk()
 root.geometry("500x500")
-
 
 class App():
   def __init__(self,root):
