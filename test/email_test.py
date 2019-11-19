@@ -2,6 +2,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
+from email.mime.multipart import MIMEBase
 from email.header import Header
 import os
 
@@ -53,11 +54,11 @@ class SendEmail():
         image.add_header('Content-Id','<image1>')
         image['Content-Disposition'] = 'attachment;filename="{}"'.format(name)
         self.message.attach(image)
-    def add_fild(self,file):
-        att2 = MIMEText(, 'base64', 'utf-8')
-        att2["Content-Type"] = 'application/octet-stream'
-        att2["Content-Disposition"] = 'attachment; filename="runoob.txt"'
-        message.attach(att2)
+    def add_text_file(self,file):
+        text_file = MIMEText(file, 'base64', 'utf-8')
+        text_file["Content-Type"] = 'application/octet-stream'
+        text_file["Content-Disposition"] = 'attachment; filename="runoob.txt"'
+        self.message.attach(text_file)
 
 
 
@@ -71,7 +72,9 @@ test_mail.set_emial_subject("邮件主题")
 test_mail.set_email_content("邮件内容")
 test_mail.add_message()
 image_file = open("test/image.png","rb").read()
+test_py = open("test/test.py","rb").read()
 test_mail.add_image(image_file,"image.png")
+test_mail.add_text_file(test_py)
 (status,msg,e) = test_mail.sendmail()
 print(msg)
 test_mail.quit()
