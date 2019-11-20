@@ -10,6 +10,13 @@
       "request": "launch",
       "program": "${workspaceFolder}/main.py",
       "console": "integratedTerminal"
+    },
+    {
+      "name": "db",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/db/index.py",
+      "console": "integratedTerminal"
     }
   ]
 }
