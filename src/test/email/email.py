@@ -37,8 +37,6 @@ f3.pack(fill=X)
 
 
 
-
-
 root.mainloop()
 
 
